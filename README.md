@@ -19,15 +19,12 @@ Proyecto para aplicar Consumer Driven Contract Testing.
 * Github: [@mahuerta](https://github.com/mahuerta)
 
 # CDCT_Artillery
-C:\Users\Juan Carlos\.m2\repository\jc_blazquez_2020-ma_huerta\jc_blazquez_2020-ma_huerta\0.0.1-SNAPSHOT
-
-* Sobre topoService (Proveedor):
+## Ejecución de la práctica
+* Sobre el proyecto topoService (Proveedor):
 > mvn clean install
-> 
+* Sobre el proyecto planner (Cliente):
+> mvn clean test
 
-- 
-- test de aceptación
-- test de consumidor
 
 ## Apuntes teóricos
 * ### En el proveedor: (Toposervice / Book)
