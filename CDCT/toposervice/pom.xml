@@ -10,11 +10,11 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
-	<groupId>jc_blazquez_2020-ma_huerta</groupId>
-	<artifactId>jc_blazquez_2020-ma_huerta</artifactId>
+	<groupId>jcblazquez2020-mahuerta</groupId>
+	<artifactId>toposervice</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>demo</name>
-	<description>CDCT project</description>
+	<name>toposervice</name>
+	<description>CDCT project provider</description>
 
 	<properties>
 		<java.version>11</java.version>
@@ -69,7 +69,7 @@
 				<extensions>true</extensions>
 				<configuration>
 					<testFramework>JUNIT5</testFramework>
-					<baseClassForTests>es.codeurjc.mastercloudapps.topo.BaseCDC</baseClassForTests>
+					<baseClassForTests>es.codeurjc.mastercloudapps.topo.contracts.BaseCDC</baseClassForTests>
 				</configuration>
 			</plugin>
 			<plugin>

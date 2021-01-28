@@ -1,4 +1,4 @@
-package es.codeurjc.mastercloudapps.topo;
+package es.codeurjc.mastercloudapps.topo.contracts;
 
 import es.codeurjc.mastercloudapps.topo.controller.TopoController;
 import io.restassured.module.mockmvc.RestAssuredMockMvc;
