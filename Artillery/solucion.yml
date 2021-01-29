@@ -1,0 +1,50 @@
+config:
+    environments:
+        production:
+            plugins:
+                expect: {} #Plugin para expectations & assertions
+            target: "https://localhost:8443/api/books"
+            tls:
+                rejectUnauthorized: false
+            phases:
+              - arrivalRate: 5 
+                duration: 40
+            http:
+                pool: 8 # Todos los usuarios usarán 8 conexiones.
+
+            payload:
+                path: "Artillery_enunciado/books.csv"
+                fields:
+                    - "description"
+                    - "checked"
+
+            ensure:
+                p95: 100 # milisegundos
+                maxErrorRate: 0
+
+scenarios:
+  - name: "Escenario 1: Consulta del primer Libro como usuario sin loguear."
+    weight: 7 # 7/10 casos
+    flow:
+      - get:
+            url: "/"
+            capture:
+                json: "$[0].id"
+                as: id_first_book
+            expect:
+                statusCode: 200
+                contentType: json
+      - get:
+            url: "/{{ id_first_book }}"
+            capture:
+                json: "$.title"
+                as: title_first_book
+            expect:
+                statusCode: 200
+                contentType: json
+                equals:
+                  - "{{ title_first_book }}"
+                  - "SUEÑOS DE ACERO Y NEON"
+        
+              
+          
