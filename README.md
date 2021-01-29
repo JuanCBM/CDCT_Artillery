@@ -18,7 +18,7 @@ Proyecto para aplicar Consumer Driven Contract Testing.
 👤 **mahuerta**: Miguel Ángel Huerta Rodríguez
 * Github: [@mahuerta](https://github.com/mahuerta)
 
-# CDCT_Artillery
+# CDCT: Consumer Driven Contract Testing
 ## Ejecución de la práctica
 * Sobre el proyecto topoService (Proveedor):
 > mvn clean install
@@ -50,3 +50,12 @@ Proyecto para aplicar Consumer Driven Contract Testing.
     > C:\Users\Juan Carlos\.m2\repository\jcblazquez2020-mahuerta\toposervice\0.0.1-SNAPSHOT
   - Compila los test con el stub
   - Ejecuta los test
+
+
+# Artillery
+## Ejecución de la práctica
+- Primero tenemos que tener lanzada la aplicación Artillery_enunciado
+- Es necesario instalar el plugin para expectations & assertions
+> npm install -g artillery-plugin-expect
+- Para ejecutar la práctica, ejecutaremos el comando:
+> artillery run --environment production --output output.json solucion.yml 

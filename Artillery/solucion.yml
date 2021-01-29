@@ -2,7 +2,7 @@ config:
     environments:
         production:
             plugins:
-                expect: {} #Plugin para expectations & assertions
+                expect: {} # Plugin para expectations & assertions
             target: "https://localhost:8443/api/books"
             tls:
                 rejectUnauthorized: false
@@ -20,7 +20,7 @@ config:
 
             ensure:
                 p95: 100 # milisegundos
-                maxErrorRate: 0
+                maxErrorRate: 0 # 0% de tasa de error
 
 scenarios:
   - name: "Escenario 1: Consulta del primer Libro como usuario sin loguear."
