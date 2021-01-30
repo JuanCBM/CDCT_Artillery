@@ -3,7 +3,7 @@ config:
         production:
             plugins:
                 expect: {} # Plugin para expectations & assertions
-            target: "https://localhost:8443/api/books"
+            target: "https://localhost:8443/api"
             tls:
                 rejectUnauthorized: false
             phases:
@@ -15,19 +15,25 @@ config:
             payload:
                 path: "Artillery_enunciado/books.csv"
                 fields:
+                    - "title"
                     - "description"
-                    - "checked"
-
+            variables:
+                admin_username:
+                    - "admin"
+                user_username:
+                    - "admin"
+                password:
+                    - "pass"
             ensure:
                 p95: 100 # milisegundos
                 maxErrorRate: 0 # 0% de tasa de error
 
 scenarios:
-  - name: "Escenario 1: Consulta del primer Libro como usuario sin loguear."
+  - name: "Escenario 1: Consulta del primer Libro: Recuperación todos los libros y consulta del primero como usuario sin loguear."
     weight: 7 # 7/10 casos
     flow:
       - get:
-            url: "/"
+            url: "/books/"
             capture:
                 json: "$[0].id"
                 as: id_first_book
@@ -35,7 +41,7 @@ scenarios:
                 statusCode: 200
                 contentType: json
       - get:
-            url: "/{{ id_first_book }}"
+            url: "/books/{{ id_first_book }}"
             capture:
                 json: "$.title"
                 as: title_first_book
@@ -45,6 +51,77 @@ scenarios:
                 equals:
                   - "{{ title_first_book }}"
                   - "SUEÑOS DE ACERO Y NEON"
-        
-              
+  - name: "Escenario 2: Creación de un Libro: Creación de libro como usuario logueado y consulta de ese libro."
+    weight: 2 # 2/10 casos
+    flow:
+      - get:
+            url: "/logIn"
+            auth:
+                user: "{{ user_username }}"
+                pass: "{{ password }}"
+            expect:
+                statusCode: 200
+      - post:
+            url: "/books/"
+            json:
+                title: "{{ title }}"
+                description: "{{ description }}"
+            capture:
+                json: "$.id"
+                as: "id_book_created"
+            expect:
+                statusCode: 201
+                contentType: json
+      - get:
+            url: "/books/{{ id_book_created }}"
+            capture:
+                json: "$.title"
+                as: title_created_book
+            expect:
+                statusCode: 200
+                contentType: json
+                equals:
+                  - "{{ title_created_book }}"
+                  - "{{ title }}"
+  - name: "Escenario 3: Borrado de un Libro: Creación de un Libro como admin, consulta del libro, borrado y comprobación de borrado."
+    weight: 1 # 1/10 casos
+    flow:
+      - get:
+            url: "/logIn"
+            auth:
+                user: "{{ admin_username }}"
+                pass: "{{ password }}"
+            expect:
+                statusCode: 200
+      - post:
+            url: "/books/"
+            json:
+                title: "{{ title }}"
+                description: "{{ description }}"
+            capture:
+                json: "$.id"
+                as: "id_book_created"
+            expect:
+                statusCode: 201
+                contentType: json
+      - get:
+            url: "/books/{{ id_book_created }}"
+            capture:
+                json: "$.title"
+                as: title_created_book
+            expect:
+                statusCode: 200
+                contentType: json
+                equals:
+                  - "{{ title_created_book }}"
+                  - "{{ title }}"
+      - delete:
+            url: "/books/{{ id_book_created }}"
+            expect:
+                statusCode: 204
+      - get:
+            url: "/books/{{ id_book_created }}"            
+            expect:
+                statusCode: 404
+          
           
