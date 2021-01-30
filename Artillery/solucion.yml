@@ -11,7 +11,6 @@ config:
                 duration: 40
             http:
                 pool: 8 # Todos los usuarios usarán 8 conexiones.
-
             payload:
                 path: "Artillery_enunciado/books.csv"
                 fields:
@@ -27,7 +26,6 @@ config:
             ensure:
                 p95: 100 # milisegundos
                 maxErrorRate: 0 # 0% de tasa de error
-
 scenarios:
   - name: "Escenario 1: Consulta del primer Libro: Recuperación todos los libros y consulta del primero como usuario sin loguear."
     weight: 7 # 7/10 casos
