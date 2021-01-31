@@ -25,37 +25,38 @@ Proyecto para aplicar Consumer Driven Contract Testing.
 * Sobre el proyecto planner (Cliente):
 > mvn clean test
 
+# Artillery
+## Ejecución de la práctica
+- Primero tenemos que tener lanzada la aplicación Artillery_enunciado
+- Instalamos artillery:
+>  npm install -g artillery
+- Es necesario instalar el plugin para expectations & assertions
+> npm install -g artillery-plugin-expect
+- Para ejecutar la práctica, ejecutaremos el comando:
+> artillery run --environment local --output output.json solucion.yml 
+
 
 ## Apuntes teóricos
 * ### En el proveedor: (Toposervice / Book)
-> mvn clean install 
+> mvn clean install
 
-ó 
+ó
 
 > mvn clean test
- - mvn test:
-   - Compila aplicación 
-   - Genera los test en base al contrato (target/generated-test-sources/contracts/ContractVerifierTest)
-   - Compila y ejecuta los test y la clase base
-   - Ejecuta los test
- - mvn install: 
-   - Instala el certificado en el respositorio maven local para poder ser usado por el cliente 
-     > C:\Users\Juan Carlos\.m2\repository\jcblazquez2020-mahuerta\toposervice\0.0.1-SNAPSHOT
+- mvn test:
+    - Compila aplicación
+    - Genera los test en base al contrato (target/generated-test-sources/contracts/ContractVerifierTest)
+    - Compila y ejecuta los test y la clase base
+    - Ejecuta los test
+- mvn install:
+    - Instala el certificado en el respositorio maven local para poder ser usado por el cliente
+      > C:\Users\Juan Carlos\.m2\repository\jcblazquez2020-mahuerta\toposervice\0.0.1-SNAPSHOT
 
 * ### En el consumidor: (Planner / Store)
 
 - mvn test en el consumidor:
-  - Compila la aplicación
-  - Descarga el stub del repositorio maven local
-    > C:\Users\Juan Carlos\.m2\repository\jcblazquez2020-mahuerta\toposervice\0.0.1-SNAPSHOT
-  - Compila los test con el stub
-  - Ejecuta los test
-
-
-# Artillery
-## Ejecución de la práctica
-- Primero tenemos que tener lanzada la aplicación Artillery_enunciado
-- Es necesario instalar el plugin para expectations & assertions
-> npm install -g artillery-plugin-expect
-- Para ejecutar la práctica, ejecutaremos el comando:
-> artillery run --environment production --output output.json solucion.yml 
+    - Compila la aplicación
+    - Descarga el stub del repositorio maven local
+      > C:\Users\Juan Carlos\.m2\repository\jcblazquez2020-mahuerta\toposervice\0.0.1-SNAPSHOT
+    - Compila los test con el stub
+    - Ejecuta los test

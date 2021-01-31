@@ -1,6 +1,6 @@
 config:
     environments:
-        production:
+        local:
             plugins:
                 expect: {} # Plugin para expectations & assertions
             target: "https://localhost:8443/api"
@@ -12,7 +12,7 @@ config:
             http:
                 pool: 8 # Todos los usuarios usarán 8 conexiones.
             payload:
-                path: "Artillery_enunciado/books.csv"
+                path: "books.csv"
                 fields:
                     - "title"
                     - "description"
