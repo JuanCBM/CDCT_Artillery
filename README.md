@@ -25,6 +25,10 @@ Proyecto para aplicar Consumer Driven Contract Testing.
 * Sobre el proyecto planner (Cliente):
 > mvn clean test
 
+
+<h1 align="center">Artillery 👨🏻‍💻 </h1>
+Proyecto para realizar pruebas de carga con Artillery.
+
 # Artillery
 ## Ejecución de la práctica
 - Primero tenemos que tener lanzada la aplicación Artillery_enunciado
