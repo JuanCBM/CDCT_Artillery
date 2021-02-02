@@ -38,7 +38,8 @@ Proyecto para realizar pruebas de carga con Artillery.
 > npm install -g artillery-plugin-expect
 - Para ejecutar la práctica, ejecutaremos el comando:
 > artillery run --environment local --output output.json solucion.yml 
-
+- Con este comando te abre un explorador y te renderiza un informe:
+> artillery report output.json 
 
 ## Apuntes teóricos
 * ### En el proveedor: (Toposervice / Book)
