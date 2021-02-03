@@ -65,3 +65,6 @@ Proyecto para realizar pruebas de carga con Artillery.
       > C:\Users\Juan Carlos\.m2\repository\jcblazquez2020-mahuerta\toposervice\0.0.1-SNAPSHOT
     - Compila los test con el stub
     - Ejecuta los test
+    
+* ### Artillery
+- Se pueden utilizar los environments para realizar pruebas de aceptación
