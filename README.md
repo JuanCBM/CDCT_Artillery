@@ -68,3 +68,9 @@ Proyecto para realizar pruebas de carga con Artillery.
     
 * ### Artillery
 - Se pueden utilizar los environments para realizar pruebas de aceptación
+
+
+### Pruebas de aceptación
+- Lenguaje Gherkin para diseñar las pruebas de aceptación
+- Cucumber te hace el código pegamento
+- Karate evita tener que escribir el código pegamento, para pruebas de API rest
